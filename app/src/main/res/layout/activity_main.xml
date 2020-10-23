@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/wheat">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="选餐Start!"
+            android:textColor="@color/blueviolet"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            android:typeface="monospace" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名：" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入姓名" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="性别：" />
+
+            <RadioGroup
+                android:id="@+id/rg_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="男" />
+
+                <RadioButton
+                    android:id="@+id/rb_woman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="女" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="喜好：" />
+
+            <CheckBox
+                android:id="@+id/cb_sour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="酸" />
+
+            <CheckBox
+                android:id="@+id/cb_sweet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="甜" />
+
+            <CheckBox
+                android:id="@+id/cb_bitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="苦" />
+
+            <CheckBox
+                android:id="@+id/cb_hot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="辣" />
+
+            <CheckBox
+                android:id="@+id/cb_salt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="咸" />
+
+            <CheckBox
+                android:id="@+id/cb_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="淡" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="预算：" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="0元" />
+
+            <SeekBar
+                android:id="@+id/sb_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:max="100" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="100元" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_find"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="寻找菜品"
+            android:textColor="@color/sienna"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击图片进行切换"
+            android:layout_gravity="center"
+            android:textColor="@color/orangered"
+            android:background="@color/chartreuse"/>
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gulurou"/>
+
+        <Button
+            android:id="@+id/tb_click"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="显示信息"
+            android:textColor="@color/slateblue"
+            android:background="@color/turquoise"/>
+
+    </LinearLayout>
+</LinearLayout>
