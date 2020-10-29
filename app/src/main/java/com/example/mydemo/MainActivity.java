@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,13 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private List<Food> list_food;
     private List<Food> list_get;
     private Person person;
-    private RadioGroupListener radioGroupListener;
     private boolean issour, issweet, isbitter, ishot, issalt, islight;
-    private CheckBoxListener checkBoxListener;
     private int price = 30;
     private int count;
-    private SeekBarListener seekBarListener;
-    private ButtonListener buttonListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +47,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setListener() {
-        radioGroupListener = new RadioGroupListener();
+        RadioGroupListener radioGroupListener = new RadioGroupListener();
         sex.setOnCheckedChangeListener(radioGroupListener);
-        checkBoxListener = new CheckBoxListener();
+        CheckBoxListener checkBoxListener = new CheckBoxListener();
         sour.setOnCheckedChangeListener(checkBoxListener);
         sweet.setOnCheckedChangeListener(checkBoxListener);
         bitter.setOnCheckedChangeListener(checkBoxListener);
         hot.setOnCheckedChangeListener(checkBoxListener);
         salt.setOnCheckedChangeListener(checkBoxListener);
         light.setOnCheckedChangeListener(checkBoxListener);
-        seekBarListener = new SeekBarListener();
+        SeekBarListener seekBarListener = new SeekBarListener();
         seekBar.setOnSeekBarChangeListener(seekBarListener);
-        buttonListener = new ButtonListener();
+        ButtonListener buttonListener = new ButtonListener();
         find.setOnClickListener(buttonListener);
         click.setOnClickListener(buttonListener);
     }
@@ -126,46 +123,22 @@ public class MainActivity extends AppCompatActivity {
             CheckBox cbBox = (CheckBox) buttonView;
             switch (cbBox.getId()) {
                 case R.id.cb_sour:
-                    if (isChecked) {
-                        issour = true;
-                    } else {
-                        issour = false;
-                    }
+                    issour = isChecked;
                     break;
                 case R.id.cb_sweet:
-                    if (isChecked) {
-                        issweet = true;
-                    } else {
-                        issweet = false;
-                    }
+                    issweet = isChecked;
                     break;
                 case R.id.cb_bitter:
-                    if (isChecked) {
-                        isbitter = true;
-                    } else {
-                        isbitter = false;
-                    }
+                    isbitter = isChecked;
                     break;
                 case R.id.cb_hot:
-                    if (isChecked) {
-                        ishot = true;
-                    } else {
-                        ishot = false;
-                    }
+                    ishot = isChecked;
                     break;
                 case R.id.cb_salt:
-                    if (isChecked) {
-                        issalt = true;
-                    } else {
-                        issalt = false;
-                    }
+                    issalt = isChecked;
                     break;
                 case R.id.cb_light:
-                    if (isChecked) {
-                        islight = true;
-                    } else {
-                        islight = false;
-                    }
+                    islight = isChecked;
                     break;
             }
             System.out.println("当前喜好：" + " 酸：" + issour + " 甜：" + issweet + " 苦：" + isbitter + " 辣：" + ishot + " 咸：" + issalt + " 淡：" + islight);
@@ -200,11 +173,23 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.tb_click:
                     //当用户点击显示用户及所选信息
-                    Toast.makeText(MainActivity.this,
-                            "用户姓名：" + name.getText().toString() + " " +
-                                    "用户性别：" + person.getSex() + " " +
-                                    "所选食物：" + list_get.get(count).getName(), Toast.LENGTH_SHORT)
-                            .show();
+                    if (name.getText().toString().equals("")) {
+                        Toast.makeText(MainActivity.this, "请输入姓名", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    if (person.getSex() == null) {
+                        Toast.makeText(MainActivity.this, "请选择性别", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    try {
+                        Toast.makeText(MainActivity.this,
+                                "用户姓名：" + name.getText().toString() + " " +
+                                        "用户性别：" + person.getSex() + " " +
+                                        "所选食物：" + list_get.get(count).getName(), Toast.LENGTH_SHORT)
+                                .show();
+                    } catch (Exception e) {
+                        Toast.makeText(MainActivity.this, "请选择菜品", Toast.LENGTH_SHORT).show();
+                    }
                     break;
             }
         }
@@ -232,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
     private void showPic() {
         try {
             int a = list_get.get(count).getPic();
-            pic.setImageDrawable(getResources().getDrawable(a, null));
+            pic.setImageDrawable(ResourcesCompat.getDrawable(getResources(), a, null));
         } catch (Exception ex) {
             Toast.makeText(MainActivity.this, "没有选择", Toast.LENGTH_SHORT).show();
         }
